@@ -137,10 +137,10 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1600&q=75&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center 30%;
-    opacity: 0.18;
+    background: 
+      radial-gradient(ellipse 60% 80% at 70% 40%, rgba(200,116,138,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 85% 70%, rgba(201,169,110,0.06) 0%, transparent 50%),
+      linear-gradient(160deg, rgba(26,21,24,0) 0%, rgba(200,116,138,0.04) 50%, rgba(26,21,24,0) 100%);
     pointer-events: none;
   }
   .hero-rule {
@@ -381,12 +381,37 @@
     overflow: hidden;
     position: relative;
   }
-  .about-photo-frame img {
+  /* CSS art placeholder for about photo */
+  .about-photo-art {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    background:
+      radial-gradient(ellipse 50% 35% at 50% 28%, rgba(200,116,138,0.45) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 60% at 50% 70%, rgba(245,220,227,0.6) 0%, transparent 80%),
+      linear-gradient(170deg, #E8A5B5 0%, #F5DCE3 40%, #C8748A22 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .about-photo-art-inner {
+    text-align: center;
+    padding: 2rem;
+  }
+  .about-photo-art-icon {
+    font-family: var(--serif);
+    font-size: 5rem;
+    font-style: italic;
+    color: rgba(200,116,138,0.5);
+    line-height: 1;
     display: block;
+    margin-bottom: 0.5rem;
+  }
+  .about-photo-art-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(200,116,138,0.6);
+    font-weight: 500;
   }
   .about-photo-frame::before {
     content: '';
@@ -396,6 +421,7 @@
     border: 1.5px solid var(--rose-light);
     border-radius: 2px;
     pointer-events: none;
+    z-index: 1;
   }
   .about-stat {
     position: absolute;
@@ -404,6 +430,7 @@
     background: var(--black);
     padding: 1.25rem 1.75rem;
     border-radius: 2px;
+    z-index: 2;
   }
   .about-stat-num {
     font-family: var(--serif);
@@ -511,6 +538,62 @@
   .g8 { grid-column: 4/7; grid-row: 3/4; }
   .g9 { grid-column: 7/10; grid-row: 3/4; }
   .g10 { grid-column: 10/13; grid-row: 3/4; }
+
+  /* Gallery CSS art backgrounds */
+  .gallery-art-color {
+    background: linear-gradient(135deg, #C8748A 0%, #8B3A5A 30%, #E8A5B5 60%, #C9A96E 100%);
+  }
+  .gallery-art-lashes {
+    background: linear-gradient(160deg, #1A1518 0%, #2D1F26 40%, #C8748A33 80%, #1A1518 100%);
+  }
+  .gallery-art-brows {
+    background: linear-gradient(145deg, #3D2A32 0%, #C8748A44 50%, #2A1820 100%);
+  }
+  .gallery-art-nails {
+    background: linear-gradient(135deg, #E8A5B5 0%, #C8748A 40%, #F5DCE3 70%, #C9A96E55 100%);
+  }
+  .gallery-art-balayage {
+    background: linear-gradient(170deg, #C9A96E 0%, #8B6B3D 30%, #FAF7F5 60%, #C8748A44 100%);
+  }
+  .gallery-art-cut {
+    background: linear-gradient(145deg, #4A3040 0%, #C8748A55 45%, #2A1820 100%);
+  }
+  .gallery-art-extensions {
+    background: linear-gradient(135deg, #1A1518 0%, #C9A96E33 40%, #3D2A32 70%, #C8748A22 100%);
+  }
+  .gallery-art-gel {
+    background: linear-gradient(155deg, #F5DCE3 0%, #E8A5B5 35%, #C8748A 65%, #8B3A5A 100%);
+  }
+  .gallery-art-blowout {
+    background: linear-gradient(140deg, #C8748A22 0%, #FAF7F5 30%, #C9A96E55 60%, #E8A5B5 100%);
+  }
+  .gallery-art-color2 {
+    background: linear-gradient(150deg, #8B3A5A 0%, #C8748A 40%, #E8A5B5 70%, #C9A96E44 100%);
+  }
+
+  /* Gallery art pattern overlays */
+  .gallery-cell-inner.gallery-art-color::before,
+  .gallery-cell-inner.gallery-art-lashes::before,
+  .gallery-cell-inner.gallery-art-brows::before,
+  .gallery-cell-inner.gallery-art-nails::before,
+  .gallery-cell-inner.gallery-art-balayage::before,
+  .gallery-cell-inner.gallery-art-cut::before,
+  .gallery-cell-inner.gallery-art-extensions::before,
+  .gallery-cell-inner.gallery-art-gel::before,
+  .gallery-cell-inner.gallery-art-blowout::before,
+  .gallery-cell-inner.gallery-art-color2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.25;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      rgba(255,255,255,0.04) 8px,
+      rgba(255,255,255,0.04) 9px
+    );
+  }
 
   /* === BOOKING CTA === */
   .booking {
@@ -892,11 +975,12 @@
     <div class="about-inner">
       <div class="about-visual">
         <div class="about-photo-frame">
-          <img
-            src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80&auto=format&fit=crop"
-            alt="Stylist working on a client's hair at The Beauty Bar salon"
-            loading="lazy"
-          >
+          <div class="about-photo-art">
+            <div class="about-photo-art-inner">
+              <span class="about-photo-art-icon">✂</span>
+              <div class="about-photo-art-label">The Beauty Bar</div>
+            </div>
+          </div>
         </div>
         <div class="about-stat">
           <div class="about-stat-num">1,400+</div>
@@ -945,52 +1029,52 @@
     </div>
     <div class="gallery-mosaic">
       <div class="gallery-cell g1">
-        <div class="gallery-cell-inner" style="background-image:url('https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=80&auto=format&fit=crop')">
+        <div class="gallery-cell-inner gallery-art-color">
           <span class="gallery-label">Color</span>
         </div>
       </div>
       <div class="gallery-cell g2">
-        <div class="gallery-cell-inner" style="background-image:url('https://images.unsplash.com/photo-1583001809873-a128495da465?w=600&q=80&auto=format&fit=crop')">
+        <div class="gallery-cell-inner gallery-art-lashes">
           <span class="gallery-label">Lashes</span>
         </div>
       </div>
       <div class="gallery-cell g3">
-        <div class="gallery-cell-inner" style="background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&auto=format&fit=crop')">
+        <div class="gallery-cell-inner gallery-art-brows">
           <span class="gallery-label">Brows</span>
         </div>
       </div>
       <div class="gallery-cell g4">
-        <div class="gallery-cell-inner" style="background-image:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80&auto=format&fit=crop')">
+        <div class="gallery-cell-inner gallery-art-nails">
           <span class="gallery-label">Nails</span>
         </div>
       </div>
       <div class="gallery-cell g5">
-        <div class="gallery-cell-inner" style="background-image:url('https://images.unsplash.com/photo-1620331311520-246422fd82f9?w=600&q=80&auto=format&fit=crop')">
+        <div class="gallery-cell-inner gallery-art-balayage">
           <span class="gallery-label">Balayage</span>
         </div>
       </div>
       <div class="gallery-cell g6">
-        <div class="gallery-cell-inner" style="background-image:url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80&auto=format&fit=crop')">
+        <div class="gallery-cell-inner gallery-art-cut">
           <span class="gallery-label">Cut</span>
         </div>
       </div>
       <div class="gallery-cell g7">
-        <div class="gallery-cell-inner" style="background-image:url('https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=600&q=80&auto=format&fit=crop')">
+        <div class="gallery-cell-inner gallery-art-extensions">
           <span class="gallery-label">Extensions</span>
         </div>
       </div>
       <div class="gallery-cell g8">
-        <div class="gallery-cell-inner" style="background-image:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80&auto=format&fit=crop&crop=right')">
+        <div class="gallery-cell-inner gallery-art-gel">
           <span class="gallery-label">Gel Nails</span>
         </div>
       </div>
       <div class="gallery-cell g9">
-        <div class="gallery-cell-inner" style="background-image:url('https://images.unsplash.com/photo-1560869713-7d0a29430803?w=600&q=80&auto=format&fit=crop')">
+        <div class="gallery-cell-inner gallery-art-blowout">
           <span class="gallery-label">Blowout</span>
         </div>
       </div>
       <div class="gallery-cell g10">
-        <div class="gallery-cell-inner" style="background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&auto=format&fit=crop&crop=bottom')">
+        <div class="gallery-cell-inner gallery-art-color2">
           <span class="gallery-label">Color</span>
         </div>
       </div>
@@ -1093,7 +1177,6 @@
 
   // Hero elements always visible
   document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
-
 </script>
 </body>
 </html>
